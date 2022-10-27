@@ -1,6 +1,10 @@
 // initialize express
 const express = require('express')
+const methodOverride = require('method-override')
+
 const app = express()
+
+app.use(methodOverride('_method'))
 
 // require handlebars
 const exphbs = require('express-handlebars');
@@ -16,6 +20,7 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const models = require('./db/models');
+
 
 // mock array of projects
 var events = [
@@ -58,6 +63,28 @@ app.post('/events', (req, res) => {
     console.log(err)
   });
 })
+
+// EDIT
+app.get('/events/:id/edit', (req, res) => {
+  models.Event.findByPk(req.params.id).then((event) => {
+    res.render('events-edit', { event: event });
+  }).catch((err) => {
+    console.log(err.message);
+  })
+});
+
+// UPDATE
+app.put('/events/:id', (req, res) => {
+  models.Event.findByPk(req.params.id).then(event => {
+    event.update(req.body).then(event => {
+      res.redirect(`/events/${req.params.id}`);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }).catch((err) => {
+    console.log(err);
+  });
+});
 
 
 // Choose port to listen
