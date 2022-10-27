@@ -1,0 +1,19 @@
+{
+ "development": {
+   "username": null,
+   "password": null,
+   "database": "make-parties-update",
+   "host": "127.0.0.1",
+   "dialect": "postgres"
+ },
+ "test": {
+   "username": null,
+   "password": null,
+   "database": "make-parties-update-test",
+   "host": "127.0.0.1",
+   "dialect": "postgres"
+ },
+ "production": {
+   "use_env_variable": "C:/Applications/Postgres.app/Contents/Versions/15/bin/psql/p3306/make-parties-update"
+ }
+}
