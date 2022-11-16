@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { //Required field
           model: 'Events',
-          key: 'id'
+          key: 'Id'
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'

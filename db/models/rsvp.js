@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Rsvp.associate = function(models) {
     Rsvp.belongsTo(models.Event); // EventId
+    Rsvp.belongsTo(models.User);
   }
   return Rsvp;
 };

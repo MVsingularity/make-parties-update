@@ -9,6 +9,13 @@
   {{> navbar}}
   <div class="container">
     {{{body}}}
+    {{#if sessionFlash && sessionFlash.message}}
+      <div class="alert fade show alert-dismissible alert-{{sessionFlash.type}}">
+        {{sessionFlash.message}}
+        <button.close(type='button', data-dismiss='alert', aria-label='Close')
+        <span (aria-hidden='true')>x</span>
+      </div>
+    {{/if}}
   </div>
   <!-- Footer -->
   <footer class="page-footer font-small blue pt-4">

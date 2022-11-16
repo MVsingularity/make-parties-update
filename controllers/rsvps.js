@@ -10,6 +10,7 @@ module.exports = (app, models) => {
   app.post('/events/:eventId/rsvps', (req, res) => {
       req.body.EventId = req.params.eventId;
       models.Rsvp.create(req.body).then(rsvp => {
+        rsvp.setUser(res.locals.currentUser);
         res.redirect(`/events/${req.params.eventId}`);
       }).catch((err) => {
           console.log(err)

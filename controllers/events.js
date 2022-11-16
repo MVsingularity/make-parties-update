@@ -14,16 +14,21 @@ module.exports = function (app, models) {
   // CREATE
   app.post('/events', (req, res) => {
     models.Event.create(req.body).then(event => {
+      event.setUser(res.locals.currentUser);
       res.redirect(`/events/${event.id}`);
     }).catch((err) => {
       console.log(err)
     });
+
   })
 
   // EDIT
   app.get('/events/:id/edit', (req, res) => {
     models.Event.findByPk(req.params.id).then((event) => {
-      res.render('events-edit', { event: event });
+      res.render('events-edit', {
+        event: event,
+        isEquals: event.UserId = currentUser.id//won't check to see if they match
+      });
     }).catch((err) => {
       console.log(err.message);
     })
@@ -64,4 +69,5 @@ module.exports = function (app, models) {
       console.log(err);
     });
   })
+
 }

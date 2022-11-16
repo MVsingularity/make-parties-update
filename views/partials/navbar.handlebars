@@ -10,6 +10,21 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">Home</a>
       </li>
+      {{#if currentUser}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/me">Profile</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+      {{else}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/sign-up">Sign-up</a>
+        </li>
+      {{/if}}
     </ul>
   </div>
 </nav>

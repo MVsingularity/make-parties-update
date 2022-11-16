@@ -1,0 +1,10 @@
+When creating RSVP set Event and User
+Set first and last name for users
+{{#if sessionFlash && sessionFlash.message}}
+  <div class="alert fade show alert-dismissible alert-{{sessionFlash.type}}">
+    {{sessionFlash.message}}
+    <button.close(type='button', data-dismiss='alert', aria-label='Close')
+    <span (aria-hidden='true')>x</span>
+  </div>
+{{/if}}
+Create express handlebars helper file for edit and delete buttons when logged in
