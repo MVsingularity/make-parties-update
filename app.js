@@ -88,7 +88,6 @@ app.use(session({
 app.use(function(req, res, next){
   // if there's a flash message in the session request, make it available in the response, then delete it
   res.locals.sessionFlash = req.session.sessionFlash;
-  res.render('sessionFlash.message', {
   delete req.session.sessionFlash;
 
   next();
